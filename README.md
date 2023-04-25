@@ -15,13 +15,15 @@ The same goes for the controller python file, lines `robot.writeMotor(write_stri
  
 # Running on Hardware
 ## Mechanical Stuff
-1. 3D print two of both of the stl files included, wheel.stl and servo.stl
+1. 3D print two of the stl files in STL_files, wheel.stl and servo_mount.stl
 2. Attach the hubs provided with the servos to wheels the with the provided screws
 3. Cut a 12x12 piece of quarter inch plywood
 4. Use wood screws to secure the 3D printed servo attachment in the corner with the square hole facing outwards 
 5. use 8 1 inch 8-32 bolts and lock nuts to secure the servos to the attachment
-6. Attach 2 small castor-type wheels to the front 
-7. Secure the fpga board and electronics to the open space
+6. attach wheels to servo: pressfit with the hubs and servos and add the provided bolt
+7. Attach 2 small castor-type wheels to the front 
+8. Secure the fpga board and electronics to the open space
+
 ## Electrical configuration
 1. Connect the fpga to 12 V DC power
 2. Power the particle photon board by connecting the 5 volt pin on the fpga to the VIN pin on the particle photon (on the fpga 6th down on the left side when the red button is oriented at the top left, on the photon the pin is labeled). Also connect ground to ground (right of 5V on fpga, labeled on photon)
@@ -29,8 +31,17 @@ The same goes for the controller python file, lines `robot.writeMotor(write_stri
 4. Connect servos to 4.8-7 V power supply (red wire power, brown wire ground)
 5. Connect GPIO pin 5 and 7 on the FPGA to left servo and right servo control signal (the orange wire) respectively
 
-## Running code on the fpga
-### FPGA
+## Particle Photon Board Setup
+1. download the mobile app
+2. run `Pip install pyparticleio`
+3. Create a particle account 
+4. Create an access token
+5. Add that in image_prc/secret.py
+6. run `particle compile photon .`
+7. Plug photon into computer and press the button 
+8. Run `particle flash FPGA_Robot photon_firmware_1682006758610.bin` substituting FPGA_Robot with the name given to your project and photon_firmware_1682006758610.bin with the result of compiling the .ino file 
+
+## FPGA setup
 1. Install Quartus (Quartus Prime 22.1std)
 2. Install the hardware driver for the usb blaster
    * On the off chance your computer has security restrictions like ours you may be able to download it on a different device, unzip it, change all the .dll files to .txt, rezip it, upload to one drive, download, unzip, change it back, rezip, and install
@@ -40,17 +51,8 @@ The same goes for the controller python file, lines `robot.writeMotor(write_stri
 6. Select hardware setup and select USB blaster
 7. Click auto detect
 8. Click start
-### Particle Photon Board
-1. download the mobile app
-2. Pip install pyparticleio
-3. Create a particle account 
-4. Create an access token
-5. Add that in image_prc/secret.py
-6. run `particle compile photon .`
-7. Plug photon into computer and press the button 
-8. Run `particle flash FPGA_Robot photon_firmware_1682006758610.bin` substituting FPGA_Robot with the name given to your project and photon_firmware_1682006758610.bin with the result of compiling the .ino file 
 
-## Actually running it
+## Putting it all together
 1. Now the functions in the c++ code are on the photon so you can call them from python given you are connected, download other dependencies. For the GUI and vision 
 2. `Pip install PyQt5`
 3. `Pip install numpy`
