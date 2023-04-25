@@ -1,5 +1,6 @@
 # Running the Code in Simulation
 
+## Verilog
 example command: `iverilog -o pwm <files.v> ` and `vvp pwm` OR you can use the make file from the top level directory(fpga-robot) 
 
 top level drive: Make robot - Make run-robot
@@ -9,9 +10,10 @@ drive: Make driver - Make run-driver
 
 The results can be viewed in GTKwave by downloading the vcd file and opening it
 *********the lines that must be commented out are already commented out in the submission files*********
-For the image processing files, they're written in python, so you can just run it with python <name of file>
-However, the pyparticle files and methods written to pass information to the IOT device must be commented out to run just the python code. To test the image processing on a video other than the default webcam, change the line `cap = cv2.VideoCapture(0)` to `cap=cv2.VideoCapture(<path to video in directory>)` so for example, I've included a video rgb_person.mp4 in the same directory so you could use `cap=cv2.VideoCapture('rgb_person.mp4)`
-The same goes for the controller python file, lines `robot.writeMotor(write_string)` and any other lines with robot.writeMotor or robot.led must be commented out. I've included comments telling you exactly which lines.
+
+## Control/Image Processing Files
+For the image processing files, they're written in python, so you can just run it with `python <name of file>`. However, the pyparticle files and methods written to pass information to the IOT device must be commented out to run just the python code. To test the image processing on a video other than the default webcam, change the line `cap = cv2.VideoCapture(0)` to `cap=cv2.VideoCapture(<path to video in directory>)` so for example, I've included a video rgb_person.mp4 in the same directory so you could use `cap=cv2.VideoCapture('rgb_person.mp4)`
+The same goes for the controller python file, lines `robot.writeMotor(write_string)` and any other lines with `robot.writeMotor`, `robot.led`, or any addtional pyparticle functions using the `robot` object must be commented out. I've included comments telling you exactly which lines.
  
 # Running on Hardware
 ## Mechanical Stuff
@@ -36,7 +38,7 @@ The same goes for the controller python file, lines `robot.writeMotor(write_stri
 2. run `Pip install pyparticleio`
 3. Create a particle account 
 4. Create an access token
-5. Add that in image_prc/secret.py
+5. Create a file for the access token: image_prc/secret.py and write 1 line `access_token = "put your access token here"`
 6. run `particle compile photon .`
 7. Plug photon into computer and press the button 
 8. Run `particle flash FPGA_Robot photon_firmware_1682006758610.bin` substituting FPGA_Robot with the name given to your project and photon_firmware_1682006758610.bin with the result of compiling the .ino file 
