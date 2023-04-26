@@ -5,4 +5,4 @@ run:
 	vvp drive
 
 clean:
-	rm pwm control drive
+	rm drive
