@@ -7,7 +7,7 @@
 3. open the vcd file in GTKwave
 4. if desired, change the inputs in the run_drive.v file, also can change them based on the clock to see dynamic change
 5. additionally, change the mode in drive.v
-
+6. to change which files variables are dumped, comment out/uncomment the dump commands from the verilgo files in simulation_files and real_robot
 
 ## Control/Image Processing Files
 For the image processing files, they're written in python, so you can just run it with `python <name of file>`. However, the pyparticle files and methods written to pass information to the IOT device must be commented out to run just the python code. To test the image processing on a video other than the default webcam, change the line `cap = cv2.VideoCapture(0)` to `cap=cv2.VideoCapture(<path to video in directory>)` so for example, I've included a video rgb_person.mp4 in the same directory so you could use `cap=cv2.VideoCapture('rgb_person.mp4)`

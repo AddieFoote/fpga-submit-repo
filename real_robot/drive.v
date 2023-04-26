@@ -1,4 +1,3 @@
-//`import control.v
 module drive(
 	input wire clk,
 	//input wire image_mode,
