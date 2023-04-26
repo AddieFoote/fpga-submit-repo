@@ -1,3 +1,4 @@
+//`import control.v
 module drive(
 	input wire clk,
 	//input wire image_mode,
@@ -5,26 +6,15 @@ module drive(
 	input wire[32'd5: 32'd0] input_1,
 	//input wire power,
 	output wire PWM_OUT_0,
-<<<<<<< HEAD
 	output wire PWM_OUT_1
 	);
 
-=======
-	output wire PWM_OUT_1, 
-	output wire[32'd5: 32'd0] LED
-);
-
-// clock init
-wire c;
-clock c0(c);
-
+/* UNCOMMENT FOR SIMULATION
 initial begin
     $dumpfile("drive.vcd");
     $dumpvars(0, drive);
-end
+end*/
 
-//wire[32'd5: 32'd0] input_0 = 6'd31;
->>>>>>> 8305b94ce807fa6880a9c323cf3755dfa5957b2d
 wire power = 1'b0;
 wire image_mode = 1'b0;
 
@@ -34,14 +24,13 @@ wire [32'd7: 32'd0]servo_0_speed;
 wire [32'd7: 32'd0]servo_1_speed;
 wire [32'd2: 32'd0]servo_0_step;
 wire [32'd2: 32'd0]servo_1_step;
-control robot(c,
+control robot(clk,
 	servo_0_speed_write_en,
 	servo_1_speed_write_en,
 	servo_0_speed,
 	servo_1_speed,
 	servo_0_step,
 	servo_1_step,
-	//power,
 	PWM_OUT_0,
 	PWM_OUT_1
 );

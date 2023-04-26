@@ -3,24 +3,11 @@ pwm:
 run:
 	vvp pwm
 
-# robot:
-# 	iverilog -o robot ./real-fpga-robot/pwm.v ./real-fpga-robot/realfpgarobot.v
+driver:
+	iverilog -o drive run_drive.v clock.v ../real_robot/drive.v ../real_robot/control.v ../real_robot/pwm.v
 
+run-driver:
+	vvp drive
 
-# run-robot:
-# 	vvp robot
-
-# drivecontrol:
-# 	iverilog -o drivecontrol ./drive-control/control.v ./drive-control/pwml.v ./drive-control/drive-control.v
-
-# run-drivecontrol:
-# 	vvp drivecontrol
-
-# driver:
-# 	iverilog -o driver ./drive/control.v ./drive/pwm.v ./drive/drive.v ./drive/clock.v
-
-# run-driver:
-# 	vvp driver
-
-# clean:
-# 	rm pwm robot drivecontrol driver
+clean:
+	rm pwm control drive

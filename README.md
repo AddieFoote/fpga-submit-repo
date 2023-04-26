@@ -1,15 +1,11 @@
 # Running the Code in Simulation
 
 ## Verilog
-example command: `iverilog -o pwm <files.v> ` and `vvp pwm` OR you can use the make file from the top level directory(fpga-robot) 
+### Simulate PWM
+run `make pwm` then `make run` in simulation_files directory then open the vcd file in GTKwave
 
-top level drive: Make robot - Make run-robot
-controller: Make drivecontrol - Make run-drivecontrol
-drive: Make driver - Make run-driver
+### Simulate entire control
 
-
-The results can be viewed in GTKwave by downloading the vcd file and opening it
-*********the lines that must be commented out are already commented out in the submission files*********
 
 ## Control/Image Processing Files
 For the image processing files, they're written in python, so you can just run it with `python <name of file>`. However, the pyparticle files and methods written to pass information to the IOT device must be commented out to run just the python code. To test the image processing on a video other than the default webcam, change the line `cap = cv2.VideoCapture(0)` to `cap=cv2.VideoCapture(<path to video in directory>)` so for example, I've included a video rgb_person.mp4 in the same directory so you could use `cap=cv2.VideoCapture('rgb_person.mp4)`

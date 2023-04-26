@@ -1,3 +1,4 @@
+//import pwm.v
 `define MAX_DUTY 32'd9999985 
 
 module control(
