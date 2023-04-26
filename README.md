@@ -1,6 +1,9 @@
 # Running the Code in Simulation
 
 ## Verilog
+### Simulate PWM
+run `make pwm` then `make run` in simulation_files directory then open the vcd file in GTKwave
+
 ### Simulate entire control
 1. uncomment import statements and vcd dump statements from verilog code in simulation_files and real_robot
 2. from the simulation_files directory, run `make driver` then `make run` in simulation_files directory
